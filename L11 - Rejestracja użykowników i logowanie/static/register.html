@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <menu id="menu">
+        <a href="/">main</a>
+        <a href="/register">register</a>
+        <a href="/login">login</a>
+        <a href="/admin">admin</a>
+    </menu>
+
+    <h1>Register Page</h1>
+
+
+    <form action="/registerForm" method="POST">
+        <p>Login:<input type="text" name="mail" required></p>
+        <br>
+        <p>Password:<input type="password" name="pass"></p>
+        <br>
+        <p>Wiek:</p><select name="age">
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+        <br>
+        <p>Uczeń?: <input type="checkbox" name="uczen" checked="checked"></p>
+        <br>
+        <span>
+            <p>Płeć:<input type="radio" name="gender" value="K" checked="checked">K</p>
+            <p><input type="radio" name="gender" value="M">M</p>
+        </span>
+        <br>
+        <button type="submit" value="submit">Submit</button>
+        <br>
+    </form>
+
+
+
+
+</body>
+
+</html>

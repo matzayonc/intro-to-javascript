@@ -1,0 +1,18 @@
+{
+  "name": "spec-exercise",
+  "version": "1.0.0",
+  "description": "Learnig",
+  "main": "serwer1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "ja",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "express-handlebars": "*",
+    "body-parser": "*",
+    "formidable": "*"
+  }
+}
