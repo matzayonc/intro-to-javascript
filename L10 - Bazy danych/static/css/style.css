@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+menu{
+    background-color: rgb(66, 170, 235);
+    padding: 15px;
+}
+
+menu > a{
+    padding: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+h1{
+    color: mediumblue;
+    text-align: center;
+    padding: 20px;
+    font-size: 50px;;
+}
+
+table, th, td {
+    font-size: 18px;
+    border: 5px solid white;
+    border-collapse: collapse;
+}
+
+table{
+    margin: 30px;
+    display: inline;
+}
+
+td, th{
+    padding: 10px;
+}
+
+th{
+    background-color: lightgray;
+}
+
+
+.footer{
+    height: 30px;
+    background-color: rgb(71, 51, 255);
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+.header{
+    grid-area: header;
+}
+
+.addCar{
+    grid-area: menu;
+}
+
+.carTable{    
+    grid-area: main;
+    justify-self: right;
+}
+
+.main {
+    display: grid;
+    grid-template-areas:
+      'header header header'
+      'menu main main';
+}

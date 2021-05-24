@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="libs/jq.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            console.log("DOM załadowany")
+            var size = 5;
+            var map = []
+            var i = 0;
+            var turn = true;
+
+            var blue = $("<div>").addClass("circle")
+            var green = $("<div>").addClass("circle")
+            blue.css("background-color", "blue")
+            green.css("background-color", "green")
+
+
+
+            $("#reset").on("click", function () {
+                map = [];
+                i = 0;
+                $("#game").empty()
+            })
+
+            $("#start").on("click", function () {
+
+                var game = $("#game")
+                for (var i = 0; i < size * size; i++) {
+                    var div = $("<div>").addClass("square")
+                    div.attr("id", i)
+
+                    div.on("click", function () {
+
+
+
+                        if(map.length > 0){
+                            var last = map[map.length - 1];
+                            var posx = $(this).attr('id') % 5
+                            var posy = Math.floor($(this).attr('id') / 5)
+
+                            if(posx > last.x + 1 || posx < last.x - 1)
+                                alert("Zła pozycja")
+                            else if(posy > last.y + 1 || posy < last.y - 1)
+                                alert("Zła pozycja")
+                            else if(posx == last.x && posy == last.y)
+                                alert("Pozycja powtórzona")
+                            else{
+                                $(this).css("background-color", "blue")
+                                map.push({x:posx, y:posy})
+                            }
+                                
+                        }
+                        else{
+                            $(this).css("background-color", "blue")
+                            map.push({x:posx, y:posy})
+                        }
+                            
+                            
+
+                        
+                        
+                        
+                                
+
+                        
+                        console.log(map)
+                    })
+
+                    game.append(div)
+
+                }
+
+                blue.css("left", "50px")
+                blue.css("top", size*50+"px")
+                green.css("left", "0px")
+                green.css("top", size*50+"px")
+               
+                game.append(blue)
+                game.append(green)
+                
+            })
+            $("#next").on("click", function () {
+                
+                if(!map.length)
+                    alert("Za mało elementów")
+                else if(i > map.length - i  + 1)
+                    alert("koniec")
+                else{
+
+                    if(turn){
+                        blue.css("left", map[i].x*50)
+                        blue.css("top", map[i].y*50)
+                        i++
+                    }
+                    else{
+                        green.css("left", map[map.length-i].x*50)
+                        green.css("top", map[map.length-i].y*50)
+                    }
+                    turn = !turn
+                }
+                
+                
+            })
+
+        })
+
+    </script>
+    <style>
+
+       *{
+            box-sizing: border-box;
+        }
+
+        button {
+            margin: 17px;
+            padding: 5px;
+        }
+
+        div {
+            height: 50px;
+            width: 50px;
+            left: 0px;
+            top: 0px;
+            border-style: solid;
+            border-color: black;
+            border-width: 1px;
+
+        }
+
+        .square {
+            background-color: pink;
+            
+        }
+
+        .circle {
+            position: absolute;
+            left: 0px;
+            top: 250px;
+            width:50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #9e9e9e;
+        }
+
+        .marked {
+            background-color: blue;
+        }
+
+        #main{
+            position: absolute;
+            margin: 0;
+            border-width: 0;
+        }
+
+
+        #buttons {
+            width: 260px;
+            height: auto;
+            border-width: 0;
+            margin-left:  55px;
+        }
+
+
+        #game {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            margin: 0;
+            height: auto;
+            width: 260px;
+            border-width: 0;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id= "main">
+        <div id="buttons">
+            <button id="start">Start</button>
+            <button id="next">Next</button>
+            <button id="reset">Reset</button>
+        </div>
+        <div id="game"></div>
+    </div>
+    
+</body>
+
+</html>

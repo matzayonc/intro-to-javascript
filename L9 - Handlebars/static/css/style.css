@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+menu{
+    background-color: rgb(66, 170, 235);
+    padding: 15px;
+}
+
+menu > a{
+    padding: 20px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+h1{
+    color: mediumblue;
+    text-align: center;
+    padding: 20px;
+    font-size: 50px;;
+}
+
+input, button{
+    padding: 3px;
+    margin: 5px;
+}
+
+table, th, td {
+    font-size: 18px;
+    border: 5px solid white;
+    border-collapse: collapse;
+}
+
+table{
+    margin: 30px;
+}
+
+td, th{
+    padding: 10px;
+}
+
+th{
+    background-color: lightgray;
+}
+
+dt {
+    font-size: 24px;
+    margin-left: 20px;;
+    font-weight: bolder;
+}
+
+dd{
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+img{
+    height: 100px;
+}
+
+.red{
+    background-color: red;
+}
+
+.footer{
+    height: 30px;
+    background-color: rgb(71, 51, 255);
+    position: absolute;
+    bottom: 0;
+}

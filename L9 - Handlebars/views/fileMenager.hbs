@@ -1,0 +1,33 @@
+<h1>Filemenager</h1>
+
+    <table>
+    <tr>
+        <th> id </th>
+        <th> image </th>
+        <th> name </th>
+        <th> size </th>
+        <th> type </th>
+        <th colspan="2"> actions </th>
+    </tr>
+    {{#each files}}
+        <tr>
+            <td>{{this.id}}</td>          
+            <td><img src="{{this.image}}" alt=""></td>        
+            <td>{{this.name}}</td>
+            <td>{{this.size}}</td>
+            <td>{{this.type}}</td>
+            <td>
+                <form action="/info" method="POST">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <a href='#' onclick='this.parentNode.submit();'>info</a>
+                </form>
+            </td>
+            <td>
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <a href='#' onclick='this.parentNode.submit();'>delete</a>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+    </table>

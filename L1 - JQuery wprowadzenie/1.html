@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libs/jq.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            console.log("DOM załadowany")
+
+            $("#bt1").on("click", function () {
+                console.log("alert")
+                alert("komunikat")
+            })
+            $("#bt2").on("click", function () {
+                console.log("confirm")
+                var co = confirm("potwierdź")
+                if (co)
+                    console.log("TAAAAK")
+                else
+                    console.log("nie")
+            })
+            $("#bt3").on("click", function () {
+                console.log("prompt")
+                prompt("odpowiedz")
+            })
+            $("#bt4").on("click", function () {
+                $("#div1")
+                    .css("background", "green")
+                    .css("borrder", "dotted 4px blue")
+                    .width(100)
+                    .height(300)
+                    .html("<b>bold<b>")
+
+            })
+            $("#bt5").on("click", function () {
+                
+
+
+
+            })
+
+        })
+
+
+
+
+    </script>
+    <style>
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background: #ff0000;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="div1"></div>
+
+    <button id="bt1">alert</button>
+    <button id="bt2">config</button>
+    <button id="bt3">prompt</button>
+    <button id="bt4">zmiany w css-ie</button>
+    <button id="bt5">anuluj działanie buttona 1</button>
+
+
+
+</body>
+
+</html>

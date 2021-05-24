@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #div1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            overflow: hidden;
+        }
+
+        #gray {
+            background-color: gray;
+            position: absolute;
+            width: 50%;
+            height: 100vh;
+        }
+
+        #left {
+            background-color: blue;
+            position: absolute;
+            left: 49%;
+            width: 20px;
+            height: 100vh;
+            cursor: all-scroll;
+        }
+
+        #yellow {
+            background-color: yellow;
+            position: absolute;
+            left: 50%;
+            width: 50%;
+            height: 100vh;
+        }
+    </style>
+    <script src="libs/jq.js"></script>
+    <script>
+        $(document).ready(function () {
+            var pos;
+            $("#left").on("mousedown", function (e) {
+                var w = $(window).width()
+                $(window).on("mousemove", function (e) {
+                    pos = e.clientX - 10;
+                    $("#left")
+                        .css("left", pos);
+                    $("#gray")
+                        .css("width", pos+"px");
+                    $("#yellow")
+                        .css("left", pos + 20) 
+                        .css("width", w - pos - 20);
+                })
+                $("#left").on("mouseup", function (e) {
+                    $(window).off("mousemove")
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="gray"></div>
+    <div id="left"></div>
+    <div id="yellow"></div>
+</body>
+
+</html>

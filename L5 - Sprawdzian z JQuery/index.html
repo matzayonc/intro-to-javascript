@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="libs/jq.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var tab = [
+                { id: 1, c1: "f6ac55", c2: "fa8a02", name: "pn" },
+                { id: 2, c1: "3dc6f4", c2: "0ebaea", name: "wt" },
+                { id: 3, c1: "abd66d", c2: "9fc25e", name: "sr" },
+                { id: 4, c1: "f05156", c2: "ff0000", name: "cz" },
+                { id: 5, c1: "f8a0c6", c2: "ff79aa", name: "pt" },
+                { id: 6, c1: "a06db0", c2: "984190", name: "sb" },
+                { id: 7, c1: "fdd542", c2: "f5c300", name: "nd" }
+            ]
+            var images = [
+                "http://admins.spec.pl.hostingasp.pl/Stefa%C5%84czyk_Dariusz/temp/weather/storm.png",
+                "http://admins.spec.pl.hostingasp.pl/Stefa%C5%84czyk_Dariusz/temp/weather/rain.png",
+                "http://admins.spec.pl.hostingasp.pl/Stefa%C5%84czyk_Dariusz/temp/weather/clouds.png",
+                "http://admins.spec.pl.hostingasp.pl/Stefa%C5%84czyk_Dariusz/temp/weather/cloud.png",
+                "http://admins.spec.pl.hostingasp.pl/Stefa%C5%84czyk_Dariusz/temp/weather/sun.png",
+            ]
+
+            var trDay = $("<tr>")
+            $("#table").append(trDay)
+
+            for (var i = 0; i < tab.length; i++) {
+                var td = $("<td>")
+                td.text(tab[i].name)
+                trDay.append(td)
+            }
+
+            var trImage = $("<tr>")
+            $("#table").append(trImage)
+
+            for (var i = 0; i < tab.length; i++) {
+                var td = $("<td>")
+                td.css("background-image", 'url("' + images[0] + '")')
+                td.addClass("image")
+                trImage.append(td)
+            }
+
+            var trDiv = $("<tr>")
+            trDiv.css("position", "relative")
+            $("#table").append(trDiv)
+
+            for (var i = 0; i < tab.length; i++) {
+                var td = $("<td>")
+
+                var circle = $("<div>")
+                circle.addClass("circle")
+
+
+                var line = $("<div>")
+                line.addClass("line")
+
+
+
+                circle.on("mousedown", function (e) {
+
+                    console.log(e.clientY - line.offset().top)
+
+                    $("this").css("top", "50px")
+
+                    $("this").text((y / 150) * 5 + 1)
+
+                })
+
+
+                circle.css("background-color", "#" + tab[i].c2)
+                line.css("background-color", "#" + tab[i].c1)
+
+                circle.text(1)
+
+
+
+
+
+
+                trDiv.append(td)
+                td.append(line)
+                line.append(circle)
+            }
+
+            var trAvg = $("<tr>")
+            var td = $('<td colspan="' + tab.length + '">')
+            var div = $("<div>")
+            div.text("Średnia pogoda w tygodniu:")
+            div.css("width", "220px")
+            div.addClass("image")
+            div.css("background-image", 'url("' + images[0] + '")')
+            $("#table").append(trAvg)
+            trAvg.append(td)
+            td.append(div)
+
+
+
+
+        })
+
+
+
+
+
+
+    </script>
+
+    <style>
+        * {
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .circle {
+            position: absolute;
+            text-align: center;
+            font-size: 30px;
+            margin: auto;
+            margin-left: 0px;
+            top: 160px;
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            border-radius: 20px;
+
+
+        }
+
+        .line {
+            position: relative;
+            top: "10px";
+            bottom: "10px";
+            margin: auto;
+            width: 40px;
+            height: 200px;
+            background-color: chartreuse;
+            border-radius: 20px;
+
+
+        }
+
+        .image {
+            width: 100px;
+            height: 100px;
+            background-position: center;
+            margin: auto;
+        }
+
+
+        td {
+            border: 2px dashed #aaaaaa;
+            padding: 10px;
+
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <table id="table"></table>
+</body>
+
+</html>

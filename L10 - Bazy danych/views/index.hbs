@@ -1,0 +1,52 @@
+<div class="main">
+    <h1 class="header">Baza NEDB</h1>
+
+    <table class="addCar">
+        <form action="/handleForm" method="post">
+        <tr>
+            <td>ubezpieczony</td>
+            <td><input type="checkbox" name="ubezpieczony"></td>
+        </tr>
+        <tr>
+            <td>benzyna</td>
+            <td><input type="checkbox" name="benzyna"></td>
+        </tr>
+        <tr>
+            <td>uszkodzony</td>
+            <td><input type="checkbox" name="uszkodzony"></td>
+        </tr>
+        <tr>
+            <td>4x4</td>
+            <td><input type="checkbox" name="naped"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Dodaj do bazy"></td>
+        </tr>
+        </form>
+    </table>
+
+    <table id="carTable">
+        <tr>
+            <th> Ubezpieczony </th>
+            <th> benzyna </th>
+            <th> uszkodzony </th>
+            <th> 4x4 </th>
+            <th> Akcje </th>
+        </tr>
+        {{#each cars}}
+        <tr>
+            <td>{{this.ubezpieczony}}</td>
+            <td>{{this.benzyna}}</td>
+            <td>{{this.uszkodzony}}</td>
+            <td>{{this.naped}}</td>
+            <td>
+                <form action="/delete" method="POST">
+                    <input type="hidden" name="id" value="{{this._id}}">
+                    <a href='#' onclick='this.parentNode.submit();'>delete</a>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+
+</div>

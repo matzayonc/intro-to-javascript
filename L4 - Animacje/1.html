@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="libs/jq.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            console.log("DOM załadowany")
+
+            var map = []
+            var i = 0;
+
+            $("#game").on("mousedown", function (e) {
+
+                console.log(e.clientX + " " + e.clientY)
+                var div = $("<div>")
+                div.addClass("sugar")
+                div.css("left", e.clientX - 25)
+                div.css("top", e.clientY - 25)
+                $("#game").append(div)
+                map.push({ x: e.clientX - 25, y: e.clientY - 25 - 10 })
+
+
+            })
+
+            $("#step").on("click", function () {
+
+                $("#ant").css("left", map[i].x)
+                $("#ant").css("top", map[i].y)
+
+                i = (i + 1) % map.length;
+
+            })
+
+            $("#jumping").on("click", function () {
+                setInterval(function () {
+                    console.log("step")
+                    $("#ant").css("left", map[i].x)
+                    $("#ant").css("top", map[i].y)
+
+                    i = (i + 1) % map.length;
+                }, 500)
+            })
+
+            $("#fly").on("click", function () {
+
+                var i = 0;
+                var j = 0;
+                var speed = 1;
+
+
+                var ant = $("<div>").addClass("ant")
+                $("#game").append(ant)
+
+                function frame(timestamp){
+                        
+
+                    var next = (i + 1) % map.length
+
+                    
+                    var a = map[next].x - map[i].x
+                    var b = map[next].y - map[i].y
+                    var c = Math.sqrt((a*a) + (b*b))
+
+                    var amount = c / 10;
+
+                    console.log(amount)
+
+                    var vect = {
+                    x: (map[next].x - map[i].x) / amount,
+                    y: (map[next].y - map[i].y) / amount
+                    }
+
+                    ant.css("left", map[i].x + (j*vect.x))
+                    ant.css("top", map[i].y + (j*vect.y))
+                    ant.css("transform", "rotate("+((180*Math.atan2(b,a)/Math.PI)+90)+"deg)")
+
+                    console.log(Math.atan2(b,a))
+
+                    j++
+                    if(j >= amount){
+                        j = 0;
+                        i = next
+                    }                       
+                    requestAnimationFrame(frame)
+                        
+                }
+                    requestAnimationFrame(frame)
+                    
+            })
+
+        })
+
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+            position: absolute;
+            background-position: center;
+            margin: 0;
+        }
+
+        .sugar {
+            background-image: url("img/sugar.png");
+            height: 50px;
+            width: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .ant {
+            left: 0;
+            top: 0;
+            background-image: url("img/ant.png");
+            height: 50px;
+            width: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 10;
+        }
+
+        #ant {
+            top: -100px;
+        }
+
+        #main {
+            top: 0;
+            left: 0;
+            margin: 0;
+        }
+
+        #game {
+            left: 1vw;
+            top: 1vh;
+            margin: 0;
+            background-image: url("img/tiles.png");
+            background-size: 150px;
+            width: 98vw;
+            height: 98vh;
+            border: 4px solid black;
+        }
+
+        #buttons {
+            left: 1vw;
+            top: 1vh;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, .8);
+            
+            border: 4px solid rgba(0, 0, 0, .1);
+            background-origin: padding-box;
+        }
+
+        #buttons button {
+            position: relative;
+            width: 80px;
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="game">
+
+            <div id="ant" class="ant"></div>
+
+        </div>
+        <div id="buttons">
+            <button id="step">Steps</button>
+            <button id="jumping">Jumping</button>
+            <button id="fly">Fly</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

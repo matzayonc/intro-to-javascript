@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libs/jq.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            console.log("DOM załadowany")
+
+            $(window).on("mousedown", function (e) {
+                console.log("x: "+ e.clientX + ", y: "+ e.clientY)
+        })
+
+        })
+
+
+
+
+    </script>
+    <style>
+        div {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            height: 100vh;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #left{
+            background-color: red;
+            left: 0px;
+            width: 50vw;
+
+        }
+        #middle{
+            background-color: blue;
+            width: 2vw;
+            margin-left: 49vw;
+            z-index: 2;
+
+        }
+        #right{
+            background-color: yellow;
+            right: 0px;
+            width: 50vw;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="left"></div>
+    <div id="middle"></div>
+    <div id="right"></div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<h1>Index</h1>
+
+<ol>
+
+    {{#each books}}
+
+    {{#if author }}
+    <li>{{author}} {{title}}</li>
+    {{else}}
+    <li>brak autora</li>
+    {{/if}}
+    {{/each}}
+
+</ol>

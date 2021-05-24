@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+menu{
+    background-color: rgb(66, 170, 235);
+    padding: 15px;
+}
+
+menu > a{
+    padding: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+h1{
+    color: mediumblue;
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;;
+}
+
+input, button{
+    padding: 3px;
+    margin: 5px;
+}
+
+
+.red{
+    background-color: red;
+}
+
+.footer{
+    height: 40px;
+    line-height: 30px;
+    font-size: larger;
+    font-weight: bolder;
+    padding-left: 50px;
+    width: calc(100% - 50px);
+    background-color: #2060df;
+    position: absolute;
+    bottom: 0;
+}

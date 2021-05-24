@@ -1,0 +1,12 @@
+<h1>Ćwiczenie 4 - select</h1>
+
+<form action="/form" method="GET">
+    <ol>
+        {{#each books}}
+            <li><input type="checkbox" name="{{title}}" id="{{title}}">{{title}}</li>
+        {{/each}}
+        
+    </ol>
+    <input type="submit" value="Zatwierdź">
+</form>
+   

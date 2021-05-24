@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="libs/jq.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            console.log("DOM załadowany")
+            var lps = ["lp", "cena", "produkt"]
+            var ceny = ["5,60", "3,23", "7,45", "10,00", "3,20"]
+            var produkty = ["chleb", "mąka", "masło", "kefir", "dżem"]
+
+            var nag = $("<tr>")
+            $("#table").append(nag)
+
+            var suma = 0;
+
+            for (var i = 0; i < lps.length; i++) {
+                var th = $("<th>").text(lps[i])
+                nag.append(th)
+            }
+            for (var i = 0; i < ceny.length && i < produkty.length; i++) {
+                var linia = $("<tr>")
+                var lp = $("<td>").text(i)
+                var cena = $("<td>").text(ceny[i])
+                var produkt = $("<td>").text(produkty[i])
+
+                $("#table").append(linia)
+                linia.append(lp)
+                linia.append(cena)
+                linia.append(produkt)
+
+                suma += parseFloat(ceny[i].replace(",", "."))
+            }
+            var linia = $("<tr>")
+            var podpis = $("<td>").text("suma")
+            var kwota = $("<td>").text(suma)
+
+            $("#table").append(linia)
+            linia.append(podpis)
+            linia.append(kwota)
+
+        })
+
+    </script>
+    <style>
+        #table {
+            border: 2px, solid, black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <table id="table"></table>
+
+</body>
+
+</html>
